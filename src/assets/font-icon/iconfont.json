@@ -1,0 +1,44 @@
+{
+  "id": "3916215",
+  "name": "ucism",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1613304",
+      "name": "头像",
+      "font_class": "touxiang",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "383041",
+      "name": "群蜂设备配置",
+      "font_class": "shebeipeizhi",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "577398",
+      "name": "向下1",
+      "font_class": "xiangxia1",
+      "unicode": "e771",
+      "unicode_decimal": 59249
+    },
+    {
+      "icon_id": "5387782",
+      "name": "服务循环管理_o",
+      "font_class": "fuwuxunhuanguanli_o",
+      "unicode": "eb53",
+      "unicode_decimal": 60243
+    },
+    {
+      "icon_id": "8893359",
+      "name": "首页",
+      "font_class": "tab1",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    }
+  ]
+}
