@@ -26,5 +26,6 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  hmr: { overlay: false, timeout: 1000 }
 })

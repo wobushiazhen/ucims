@@ -1,12 +1,5 @@
 import request from "../utils/request.js";
  
-export function login(){
-  return request({
-    url:'/login',
-    method:"GET"
-  })
-}
-
 export function getToken(data){
   return request({
     url:"/login",
@@ -14,6 +7,7 @@ export function getToken(data){
     data
   })
 }
+
 
 export function registerTo(data){
   return request({
@@ -23,3 +17,27 @@ export function registerTo(data){
   })
 }
 
+export function currentUser(data){
+  return request({
+    url:"/currentUser",
+    method:"POST",
+    data
+  })
+}
+
+export function updataCurrentUser(data){
+  return request({
+    url:"/updataCurrentUser",
+    method:"POST",
+    data
+  })
+}
+
+
+export function updatePerson(data){
+  return request({
+    url:"/updatePerson",
+    method:'POST',
+    data,
+  })
+}

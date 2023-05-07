@@ -4,12 +4,15 @@
       <div class="lh-icon">ucims</div>
     </div>
     <div class="lhRight">
+      <div class="lhRight-sf"><screenfull></screenfull></div>
       <el-dropdown :hide-on-click="false">
-        <span class="el-dropdown-link iconfont">
-          &#xe602; 用户,{{ useUInfo.usernameL }} &#xe771;
+        <span class="el-dropdown-link iconfont lhRight-content">
+          <el-avatar size="small" :src="useUInfo.currentUser.avatar" style="marginRight:10px"/>
+           用户,{{ useUInfo.usernameL }}
+          <span class="triangle">&#xe771;</span>
         </span>
         <template #dropdown>
-          <el-dropdown-menu>
+          <el-dropdown-menu class="dropdown-activity">
             <el-dropdown-item @click="logOut"> 退出账号 </el-dropdown-item>
             <el-dropdown-item>gitee仓库</el-dropdown-item>
             <el-dropdown-item>个人中心</el-dropdown-item>
@@ -31,6 +34,9 @@
         </span>
       </template>
     </el-dialog>
+  </div>
+  <div class="titlePage">
+    <pageHeader></pageHeader>
   </div>
 </template>
 
@@ -56,13 +62,42 @@
     align-items: center;
     justify-content: center;
     padding: 0 30px;
+    .lhRight-sf {
+      margin-top: 4px;
+      margin-right: 15px;
+    }
     span:nth-child(1):hover {
       cursor: pointer;
     }
     span:last-child {
       margin-left: 12px;
     }
+    .lhRight-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70px;
+      line-height: 70px;
+    }
+    .triangle {
+      display: inline-block;
+      transform: rotate(90deg);
+    }
+    .lhRight-content:hover .triangle {
+      transform: rotate(0deg);
+    }
+    .lhRight:hover .triangle {
+      transform: rotate(0deg);
+    }
   }
+}
+.titlePage {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  // margin: 0 auto;
+  margin-left: 168px;
 }
 </style>
 
@@ -70,6 +105,8 @@
 import { uInfo } from "@/stores/userinfo.js";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import screenfull from "../component/screenfull.vue";
+import pageHeader from "@/components/pageHeader.vue";
 const centerDialogVisible = ref(false);
 const useUInfo = uInfo();
 const router = useRouter();

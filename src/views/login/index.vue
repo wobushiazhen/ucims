@@ -49,7 +49,6 @@
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 <style scoped lang='scss'>
@@ -129,10 +128,11 @@
 
 <script setup>
 import { onMounted, reactive, ref } from "vue";
-import { login, getToken, registerTo } from "@/api/login.js";
+import axios from "axios";
+import { getToken, registerTo, currentUser } from "@/api/login.js";
 import { useRouter } from "vue-router";
 import dayjs from "dayjs";
-import {uInfo} from "@/stores/userinfo.js";
+import { uInfo } from "@/stores/userinfo.js";
 //登录注册切换显示隐藏
 const isTag = ref(false);
 
@@ -169,10 +169,16 @@ const onLogin = async () => {
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);
           //往store存用户数据
-          const useUInfo=uInfo()
-          useUInfo.usernameL=formDate.userName
+          const useUInfo = uInfo();
+          useUInfo.usernameL = formDate.userName;
           router.replace("/");
-          
+          currentUser({
+            userName: formDate.userName,
+          }).then((result) => {
+            console.log(result.data,'当前用户数据');
+            useUInfo.currentUser=result.data[0]
+            useUInfo.role = result.data[0].role;
+          });
           ElMessage({
             showClose: true,
             message: `登录成功，欢迎您，${formDate.userName}！`,
